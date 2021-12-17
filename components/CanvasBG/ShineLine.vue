@@ -1,0 +1,170 @@
+<template>
+  <div class="shine_line">
+  </div>
+</template>
+
+<script>
+import noise from "perlin";
+
+export default {
+  mounted() {
+
+    console.log('noise=======',noise)
+    this.wave({
+      dom: document.querySelector(".shine_line"),
+      scale: 1000,
+      speed: 0.0006,
+      span: 200,
+      duration: 1000
+    });
+  },
+  methods:{
+    wave({
+           dom,
+           span = 20,
+           scale = 1000,
+           speed = 0.01,
+           zIndex = -999,
+           duration = 2000,
+           colors = [
+             [140, 162, 203],
+             [152, 175, 124],
+             [245, 92, 103]
+           ]
+         }) {
+      dom.style.position = "relative";
+      dom.style.zIndex = '0';
+      dom.style.overflow = "hidden";
+
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      canvas.style.position = "absolute";
+      canvas.style.zIndex = zIndex+'';
+      canvas.height = parseInt(getComputedStyle(dom)["height"]);
+      canvas.width = parseInt(getComputedStyle(dom)["width"]);
+
+      dom.appendChild(canvas);
+
+      let r = span / 2;
+
+      function Point({ cx, cy }) {
+        this.cx = cx;
+        this.cy = cy;
+      }
+      Point.prototype.draw = function() {
+        context.beginPath();
+        let s = noise.noise.simplex3(this.cx / scale, this.cy / scale, time);
+        let sa = Math.abs(s);
+        context.strokeStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${sa})`;
+        context.lineWidth = Math.abs(s) * 8;
+        let a = Math.PI * 2 * s;
+        let ap = Math.PI + a;
+
+        context.moveTo(this.cx + Math.sin(a) * r, this.cy + Math.cos(a) * r);
+        context.lineTo(this.cx + Math.cos(ap) * r, this.cy + Math.sin(ap) * r);
+
+        context.stroke();
+      };
+
+      let points = [];
+      function initPoints() {
+        for (let y = 0; y < canvas.height; y += span) {
+          for (let x = 0; x < canvas.width; x += span) {
+            points.push(
+              new Point({
+                cx: x + r,
+                cy: y + r
+              })
+            );
+          }
+        }
+      }
+      function draw() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i of points) {
+          i.draw();
+        }
+      }
+
+      let id;
+      let time = 0;
+      function animate() {
+        draw();
+        time += speed;
+        id = requestAnimationFrame(animate);
+      }
+
+      let ci = 0;
+      const color = [...colors[ci]];
+      function clickE() {
+        let target = [...colors[++ci % colors.length]];
+        move(color, target, duration);
+      }
+      dom.addEventListener("click", clickE);
+
+      const copy = target => {
+        let re = [];
+        for (let i in target) {
+          re[i] = target[i];
+        }
+
+        return re;
+      };
+
+      const move = (
+        origin,
+        target,
+        duration,
+        after, // 每次数值更改后的回调
+        fn = pro => {
+          return Math.sqrt(pro, 2);
+        } // 缓动函数
+      ) => {
+        if (fn(1) != 1) throw '[moaline-move] The fn must satisfy "fn (1) == 1"'; // 当参数为1时，对应的值也一定要为1
+
+        let st, sp;
+        st = performance.now(); // 保存开始时间
+        sp = copy(origin); // 保存源属性
+        let d = {}; // 源与目标之间每一项的距离
+        for (let i in origin) {
+          d[i] = target[i] - origin[i];
+        }
+
+        let frame = t => {
+          let pro = (t - st) / duration; // 当前进程
+          if (pro >= 1) {
+            return;
+          }
+
+          for (let i in origin) {
+            origin[i] = sp[i] + fn(pro) * d[i]; // fn(pro)得出当前时间对应的缓动函数的距离百分比，再乘以总距离
+          }
+
+          if(after) after(copy(origin), pro);
+          requestAnimationFrame(frame);
+        };
+
+        frame(st);
+      };
+
+
+      initPoints();
+      animate();
+
+      return {
+        canvas,
+        stop() {
+          cancelAnimationFrame(id);
+          dom.removeEventListener('click', clickE);
+        }
+      };
+    }
+  }
+
+}
+</script>
+
+<style>
+.shine_line{width: 100vw;height: 100vh;}
+</style>
