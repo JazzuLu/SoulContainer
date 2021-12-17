@@ -3,7 +3,7 @@
     <div class=img_container>
       <img src="https://i.picsum.photos/id/497/1920/1080.jpg?hmac=lCmyuUeNJbmkWXfeLeQ2SxRu3mII34_GIdUIBn3M6RQ" alt=""/>
     </div>
-    <div class="s1_content">
+    <div class="s1_content content">
       <p>1977年，美国俄亥俄州,一个罪犯因犯下三宗强奸案和抢劫案。</p>
       <p>案发后仅仅40小时，比利被捕。面对铁一样的事实，警方已经打算让他把牢底坐穿，结果律师惊讶地发现：比利是一个精神分裂者，而实施强暴的竟是他身体里的女同性恋（阿达拉娜）人格！</p>
     </div>
@@ -40,7 +40,5 @@ export default {
 </script>
 
 <style>
-.s1_content{
-  font-size: 42px;color: #ffffff;z-index: 10;width: 65vw;margin: 10vh auto;
-}
+.s1_content{ font-size: 42px; }
 </style>

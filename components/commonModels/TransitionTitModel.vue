@@ -42,6 +42,10 @@ export default {
     });
 
     gsap.to($(this.$refs.transitionTit).find(".label .tit")[0],{
+      scrollTrigger: {
+        trigger: this.$refs.transitionTit,
+        start: "top bottom",
+      },
       duration: 6,
       text: {
         value: this.title,

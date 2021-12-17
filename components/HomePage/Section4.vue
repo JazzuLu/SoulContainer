@@ -3,7 +3,7 @@
     <div ref="img_container" class="img_container">
       <img src="https://i.picsum.photos/id/410/1920/1080.jpg?hmac=WaY62swVOsVhkr0FVadjHuRxvjv0FULp1lQ-gQi-w-s" alt=""/>
     </div>
-    <div class="label" style="font-size: 20px;">
+    <div class="content" style="font-size: 20px;">
       <div>受欢迎的人格</div>
       1 威廉·斯坦利·米利根（比利，William Stanley Milligan），26 岁
       最初的核心人格，后来被称为“分裂的比利”或“比利” ；高中时被勒令退学，身高 6 英尺、体重 190 磅，蓝眼睛，棕色头发。

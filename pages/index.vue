@@ -13,13 +13,11 @@
     <Section5/>
     <TransitionTitModel title="Section 6 ------ Jinx · jinx"/>
     <Jinx/>
-    <img :src="jinx_1" alt="">
   </div>
 </template>
 
 <script>
 
-import jinx_1 from "../assets/img/roles/jinx_1.png"
 import BannerTop from "../components/HomePage/BannerTop";
 import FirstModel from "../components/pageModels/FirstModel";
 import TransitionTitModel from "../components/commonModels/TransitionTitModel";
@@ -43,7 +41,6 @@ export default {
     BannerTop,
   },
   data:()=>({
-    jinx_1
   }),
   mounted() {
     // console.log($)

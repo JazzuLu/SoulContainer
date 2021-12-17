@@ -3,7 +3,7 @@
     <div class=img_container>
       <img src="https://i.picsum.photos/id/497/1920/1080.jpg?hmac=lCmyuUeNJbmkWXfeLeQ2SxRu3mII34_GIdUIBn3M6RQ" alt=""/>
     </div>
-    <div class="s2_content">
+    <div class="content">
       <p>法庭上，辩护律师以“比利患有多重人格疾患，犯罪时神志不清，无法控制自己”为由，传召了4个精神病医生、一名心理学家上庭作证。</p>
 
       <p>经过长达2年的诉讼期，1979年，法庭宣判比利无罪。</p>
