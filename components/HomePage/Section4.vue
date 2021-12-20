@@ -1,7 +1,7 @@
 <template>
   <div ref="contain" class="box">
     <div ref="img_container" class="img_container">
-      <img src="https://i.picsum.photos/id/410/1920/1080.jpg?hmac=WaY62swVOsVhkr0FVadjHuRxvjv0FULp1lQ-gQi-w-s" alt=""/>
+      <img :src="bg" style="width: 100vw;" alt=""/>
     </div>
     <div class="content" style="font-size: 20px;">
       <div>受欢迎的人格</div>
@@ -63,13 +63,14 @@
 <script>
 
 import gsap from "gsap";
+import bg from "../../assets/img/Billy/bg_4.png"
 
 export default {
   props:{
-
   },
   data(){
     return {
+      bg,
     }
   },
   mounted() {

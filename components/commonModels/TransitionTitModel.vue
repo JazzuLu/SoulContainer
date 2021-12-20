@@ -2,7 +2,7 @@
   <div ref="transitionTit" class="box transition_tit" style="height:300px">
     <div class="transition_tit_mask"/>
     <div class="img_container">
-      <img src="https://i.picsum.photos/id/1033/1920/1080.jpg?hmac=PFeRtI5OXUqS7PbTPluUptCJV9_ZF4s_kN3P6teC8dI" alt=""/>
+      <img :src="img" alt="" style="width: 100vw;"/>
     </div>
     <div class="label">
       <span class="tit"></span><InputCursor/>
@@ -19,7 +19,9 @@ import InputCursor from "../InputCursor";
 export default {
   components: {InputCursor},
   props:{
-    title:{type:String,default:"Section 1"}
+    scrollY:{type:[String,Number],default:-600},
+    title:{type:String,default:"Section 1"},
+    img:{type:String,default:"https://i.picsum.photos/id/1033/1920/1080.jpg?hmac=PFeRtI5OXUqS7PbTPluUptCJV9_ZF4s_kN3P6teC8dI"},
   },
   data(){
     return {
@@ -30,7 +32,6 @@ export default {
 
     gsap.to($(this.$refs.transitionTit).find(".img_container")[0], {
       scrollTrigger: {
-        // trigger: `.transition_tit`,
         trigger: this.$refs.transitionTit,
         start: "top bottom",
         scrub:1,
@@ -38,7 +39,7 @@ export default {
         // pin: true,
         // pinSpacing: false,
       },
-      y:-600
+      y: this.scrollY,
     });
 
     gsap.to($(this.$refs.transitionTit).find(".label .tit")[0],{

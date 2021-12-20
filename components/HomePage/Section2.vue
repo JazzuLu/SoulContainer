@@ -1,7 +1,7 @@
 <template>
   <div ref="section" class="box">
     <div class=img_container>
-      <img src="https://i.picsum.photos/id/497/1920/1080.jpg?hmac=lCmyuUeNJbmkWXfeLeQ2SxRu3mII34_GIdUIBn3M6RQ" alt=""/>
+      <img src="https://i.picsum.photos/id/782/1920/1080.jpg?hmac=Yr45CXIjIidR5E6u-36gZ9BCbVCSUaBrZM1vhuBklgY" alt=""/>
     </div>
     <div class="content">
       <p>法庭上，辩护律师以“比利患有多重人格疾患，犯罪时神志不清，无法控制自己”为由，传召了4个精神病医生、一名心理学家上庭作证。</p>

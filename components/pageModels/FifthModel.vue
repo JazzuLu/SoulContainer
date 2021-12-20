@@ -1,7 +1,7 @@
 <template>
   <div class="box pink">
     <div class="img_container">
-      <img src="https://picsum.photos/1920/1080?random=5" alt=""/>
+      <img src="https://picsum.photos/1920/1080?random=2" alt=""/>
     </div>
 <!--    <div style="z-index: 2;">Pink Panel</div>-->
     <div class="svg_test">
