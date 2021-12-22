@@ -30,6 +30,17 @@ export default {
   },
   mounted() {
 
+    // gsap.to(this.$refs.transitionTit, {
+    //   scrollTrigger: {
+    //     trigger: this.$refs.transitionTit,
+    //     start: "top top",
+    //     scrub:1,
+    //     // end: "+=2000",
+    //     pin: true,
+    //     pinSpacing: false,
+    //   },
+    //   // y: this.scrollY,
+    // });
     gsap.to($(this.$refs.transitionTit).find(".img_container")[0], {
       scrollTrigger: {
         trigger: this.$refs.transitionTit,
