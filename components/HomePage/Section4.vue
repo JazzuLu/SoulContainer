@@ -1,12 +1,26 @@
 <template>
   <div ref="contain" class="box">
-    <div ref="img_container" class="img_container">
+    <div ref="img_container" class="img_c">
+      <div class="mask" ref="mask"/>
       <img :src="bg" style="width: 100vw;" alt=""/>
     </div>
-    <div class="content" style="font-size: 20px;">
-      <div>受欢迎的人格</div>
+    <div class="content section_4" style="font-size: 12px;">
+      <div class="dc">
+        <div class="dc_tit">受欢迎的人格</div>
+        <div class="li" v-for="item in Popular">
+          <div class="tit">{{item.tit}} &ensp;&ensp; {{item.age}}</div>
+          <div class="des">{{item.des}}</div>
+        </div>
+      </div>
 
-      <div>不受欢迎的人格（由于不受欢迎的人格具有令人讨厌的特点，因此受到阿瑟的压制。考尔医生在阿森斯心理健康中心首次发现了他们。）</div>
+      <div class="dc">
+        <div class="dc_tit">不受欢迎的人格</div>
+<!--        <div>（由于不受欢迎的人格具有令人讨厌的特点，因此受到阿瑟的压制。考尔医生在阿森斯心理健康中心首次发现了他们。）</div>-->
+        <div class="li" v-for="item in Unpopular">
+          <div class="tit">{{item.tit}} &ensp;&ensp; {{item.age}}</div>
+          <div class="des">{{item.des}}</div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -54,33 +68,64 @@ export default {
       bg,
       Teacher,
       Popular,
+      Unpopular,
     }
   },
   mounted() {
-
-    gsap.to(this.$refs.contain, {
-      scrollTrigger: {
-        trigger: this.$refs.contain,
-        pin: true,
-        scrub: 1,
-        end: "bottom -100%",
-      }
-    });
-    gsap.to(this.$refs.img_container, {
-      scrollTrigger: {
-        trigger: this.$refs.contain,
-        scrub: 1,
-        start: "top bottom",
-        end: "bottom -300%",
-      },
-      scale:1.5,
-      y: "-10%",
-    });
-
+    this.gsapFn();
+  },
+  methods:{
+    gsapFn(){
+      this.gsapData();
+      this.gsapBg();
+    },
+    gsapData(){
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.contain,
+          scrub: 1,
+          start: "bottom bottom",
+          end: "bottom -100%",
+        }
+      });
+      tl.to(this.$refs.mask, {opacity: .3})
+      tl.to(this.$refs.mask, {opacity: .9})
+      tl.to(this.$refs.mask, {opacity: .3})
+      tl.to(this.$refs.mask, {opacity: .1})
+    },
+    gsapBg(){
+      gsap.to(this.$refs.contain, {
+        scrollTrigger: {
+          trigger: this.$refs.contain,
+          pin: true,
+          scrub: 1,
+          end: "bottom -1000%",
+        }
+      });
+      gsap.to(this.$refs.img_container, {
+        scrollTrigger: {
+          trigger: this.$refs.contain,
+          scrub: 1,
+          start: "top bottom",
+          end: "bottom -3000%",
+        },
+        scale:1.5,
+        y: "-10%",
+      });
+    },
   }
 }
 </script>
 
 <style>
-
+  .box .content.section_4{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    padding: 0 5vw;
+  }
+  .box .content.section_4 .dc{ width: 35vw; }
+  .box .content.section_4 .dc .dc_tit{ margin-bottom: 20px; font-size: 20px; }
+  .box .content.section_4 .dc .li{ margin-bottom: 10px; }
+  .box .content.section_4 .dc .li .des{ color: #aaa; }
 </style>
