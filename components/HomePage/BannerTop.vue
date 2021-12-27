@@ -2,7 +2,7 @@
   <div class="box section1">
     <div class="jl_title">
       <div class="jl_welcome">Welcome To</div>
-      <div class="jl_world">SCHIZO <span style="font-size: 10vh">World</span></div>
+      <div class="jl_world"><span title="Dissociative Identity Disorder">DID</span> <span style="font-size: 10vh">World</span></div>
     </div>
 <!--    <div class="section1_bg noise"></div>-->
     <div class="boll noise"></div>
@@ -52,7 +52,7 @@ $cycle_bg_right:10vw;
 .section1{ background:#999; }
 .section1 .jl_title{ position: absolute;top: 8vh;right: .5vw;text-align: right;z-index: 11; }
 .section1 .jl_welcome{ font-size: 10vh; }
-.section1 .jl_world{ font-size: 16vh; }
+.section1 .jl_world{ font-size: 24vh; }
 
 .section1 .boll{ height: 90vh;width: 90vh;background-image: linear-gradient(315deg, #38484b, #18755c);border-radius:100%;position:absolute;top: -12vw;right: -15vw;z-index: 10 }
 
