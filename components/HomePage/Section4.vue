@@ -5,7 +5,6 @@
       <img :src="bg" style="width: 100vw;" alt=""/>
     </div>
 
-    i9 处理器 16核24线程 运算力强·快速切换
 
     <div class="content section_4" style="font-size: 12px;">
       <div class="dc">
